@@ -1,0 +1,9 @@
+.vscode/
+model/
+multimodal_spectroscopic_dataset/
+notes/
+outputs/
+venv/
+wandb/
+data_loader.ipynb
+load_data.ipynb

@@ -1,0 +1,54 @@
+{
+  "smiles": {
+    "empty": 0,
+    "nan_in_array": 0
+  },
+  "molecular_formula": {
+    "empty": 0,
+    "nan_in_array": 0
+  },
+  "h_nmr_peaks": {
+    "empty": 0,
+    "nan_in_array": 0
+  },
+  "c_nmr_peaks": {
+    "empty": 0,
+    "nan_in_array": 0
+  },
+  "hsqc_nmr_peaks": {
+    "empty": 24,
+    "nan_in_array": 0
+  },
+  "msms_positive_10ev": {
+    "empty": 0,
+    "nan_in_array": 0
+  },
+  "msms_positive_20ev": {
+    "empty": 0,
+    "nan_in_array": 0
+  },
+  "msms_positive_40ev": {
+    "empty": 0,
+    "nan_in_array": 0
+  },
+  "msms_negative_10ev": {
+    "empty": 0,
+    "nan_in_array": 0
+  },
+  "msms_negative_20ev": {
+    "empty": 0,
+    "nan_in_array": 0
+  },
+  "msms_negative_40ev": {
+    "empty": 0,
+    "nan_in_array": 0
+  },
+  "msms_fragments_positive": {
+    "empty": 0,
+    "nan_in_array": 0
+  },
+  "msms_fragments_negative": {
+    "empty": 0,
+    "nan_in_array": 0
+  }
+}

@@ -1,0 +1,162 @@
+Found 245 chunk files
+
+Columns in dataset:
+['smiles', 'hsqc_nmr_peaks', 'hsqc_nmr_spectrum', 'h_nmr_peaks', 'h_nmr_spectra', 'molecular_formula', 'c_nmr_peaks', 'ir_spectra', 'msms_cfmid_positive_10ev', 'msms_cfmid_positive_20ev', 'msms_cfmid_positive_40ev', 'msms_cfmid_fragments_positive', 'msms_cfmid_negative_10ev', 'msms_cfmid_negative_20ev', 'msms_cfmid_negative_40ev', 'msms_cfmid_fragments_negative', 'c_nmr_spectra', 'msms_iceberg_positive', 'msms_iceberg_fragments_positive', 'msms_scarf_positive', 'msms_scarf_fragments_positive']
+
+
+Found 245 chunk files
+
+Loading columns: ['smiles', 'molecular_formula', 'h_nmr_peaks', 'c_nmr_peaks', 'hsqc_nmr_peaks', 'msms_cfmid_positive_10ev', 'msms_cfmid_positive_20ev', 'msms_cfmid_positive_40ev', 'msms_cfmid_negative_10ev', 'msms_cfmid_negative_20ev', 'msms_cfmid_negative_40ev', 'msms_cfmid_fragments_positive', 'msms_cfmid_fragments_negative']
+Skipping (dense, per-chunk in A7/A8): ['ir_spectra', 'h_nmr_spectra', 'c_nmr_spectra', 'hsqc_nmr_spectrum']
+Rows per chunk (first): 3202
+Loading chunks (light cols only): 100%|██████████| 245/245 [00:40<00:00,  6.12it/s]
+
+Full dataset shape: (794386, 13)
+Memory usage: 1.10 GB
+Columns loaded: ['smiles', 'molecular_formula', 'h_nmr_peaks', 'c_nmr_peaks', 'hsqc_nmr_peaks', 'msms_cfmid_positive_10ev', 'msms_cfmid_positive_20ev', 'msms_cfmid_positive_40ev', 'msms_cfmid_negative_10ev', 'msms_cfmid_negative_20ev', 'msms_cfmid_negative_40ev', 'msms_cfmid_fragments_positive', 'msms_cfmid_fragments_negative']
+
+Total molecules: 794,386
+
+smiles                              empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+molecular_formula                   empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+h_nmr_peaks                         empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+c_nmr_peaks                         empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+hsqc_nmr_peaks                      empty=    24 (0.00%)  nan_in_arr=0      partial_nested=0 ← PROBLEM
+msms_cfmid_positive_10ev            empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+msms_cfmid_positive_20ev            empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+msms_cfmid_positive_40ev            empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+msms_cfmid_negative_10ev            empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+msms_cfmid_negative_20ev            empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+msms_cfmid_negative_40ev            empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+msms_cfmid_fragments_positive       empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+msms_cfmid_fragments_negative       empty=     0 (0.00%)  nan_in_arr=0      partial_nested=0
+
+[SAVED] null_report.json
+
+Canonicalizing SMILES (this takes ~5-10 min for ~790k molecules)...
+Canonicalizing: 100%|██████████| 794386/794386 [01:52<00:00, 7070.07it/s]
+
+Valid SMILES:   794,386 (100.000%)
+Invalid SMILES: 0 (0.000%)
+Dataset after dropping invalid: 794,386
+Duplicate canonical SMILES: 5,131
+  → Deduplicating (keeping first occurrence)...
+  → After deduplication: 789,255
+
+[RESULT] Clean, deduplicated dataset: 789,255 molecules
+
+Validating SELFIES round-trips...
+SELFIES RT: 100%|██████████| 789255/789255 [07:30<00:00, 1750.35it/s]
+
+SELFIES round-trip OK:   789,255 (100.000%)
+SELFIES round-trip FAIL: 0
+
+[RESULT] Final clean dataset after SELFIES filter: 789,255 molecules
+
+Shape validation on chunk 0 (3202 rows):
+
+ir_spectra                     expected=(1800,)  dominant=(1800,)  OK
+h_nmr_spectra                  expected=(10000,)  dominant=(10000,)  OK
+c_nmr_spectra                  expected=(10000,)  dominant=(10000,)  OK
+
+Variable-length columns (sampled from df_valid):
+  h_nmr_peaks                         len: min=3  mean=9.3  max=23
+  c_nmr_peaks                         len: min=4  mean=18.0  max=60
+  hsqc_nmr_peaks                      len: min=2  mean=8.8  max=24
+  msms_cfmid_positive_10ev            len: min=2  mean=3.5  max=22
+  msms_cfmid_negative_10ev            len: min=2  mean=3.2  max=23
+
+[RESULT] All fixed-length spectral arrays match expected shapes.
+
+Computing functional group flags for 50,000 molecules...
+FG detection: 100%|██████████| 50000/50000 [00:08<00:00, 6084.70it/s]
+
+Functional Group Counts (extrapolated to full 789,255 molecules):
+  nitro                     sample_count=     0  est_full=       0  (0.0%)  ← RARE (needs oversampling)
+  phosphate                 sample_count=     0  est_full=       0  (0.0%)  ← RARE (needs oversampling)
+  boronic_acid              sample_count=     0  est_full=       0  (0.0%)  ← RARE (needs oversampling)
+  lactone                   sample_count=     6  est_full=      94  (0.0%)  ← RARE (needs oversampling)
+  anhydride                 sample_count=    27  est_full=     426  (0.1%)  ← RARE (needs oversampling)
+  lactam                    sample_count=    75  est_full=   1,183  (0.1%)
+  thiol                     sample_count=   195  est_full=   3,078  (0.4%)
+  epoxide                   sample_count=   214  est_full=   3,378  (0.4%)
+  acyl_chloride             sample_count=   276  est_full=   4,356  (0.6%)
+  enamine                   sample_count=   686  est_full=  10,828  (1.4%)
+  halide_I                  sample_count=   828  est_full=  13,070  (1.7%)
+  imidazole                 sample_count=   910  est_full=  14,364  (1.8%)
+  alkyne                    sample_count=   928  est_full=  14,648  (1.9%)
+  indole                    sample_count=  1080  est_full=  17,047  (2.2%)
+  sulfone                   sample_count=  1219  est_full=  19,242  (2.4%)
+  aldehyde                  sample_count=  1341  est_full=  21,167  (2.7%)
+  urea                      sample_count=  1464  est_full=  23,109  (2.9%)
+  sulfonamide               sample_count=  2408  est_full=  38,010  (4.8%)
+  thioether                 sample_count=  2644  est_full=  41,735  (5.3%)
+  nitrile                   sample_count=  3212  est_full=  50,701  (6.4%)
+  ketone                    sample_count=  4368  est_full=  68,949  (8.7%)
+  halide_Br                 sample_count=  4409  est_full=  69,596  (8.8%)
+  carbamate                 sample_count=  4789  est_full=  75,594  (9.6%)
+...
+  amine_tertiary            sample_count= 14537  est_full= 229,467  (29.1%)
+  amine_secondary           sample_count= 16473  est_full= 260,027  (32.9%)
+  amide                     sample_count= 17975  est_full= 283,737  (35.9%)
+  arene                     sample_count= 38746  est_full= 611,609  (77.5%)
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+
+Computing Murcko scaffolds (this takes ~10 min)...
+Scaffolds: 100%|██████████| 789255/789255 [02:18<00:00, 5698.89it/s]
+Unique scaffolds: 196,549
+Acyclic molecules: 23,560
+Largest scaffold: c1ccccc1...  (72314 molecules)
+Splitting scaffolds: 100%|██████████| 196549/196549 [00:00<00:00, 1393957.15it/s]
+
+Scaffold split result:
+  Train: 710,329  (90.00%)
+  Val:   39,462  (5.00%)
+  Test:  39,464  (5.00%)
+
+Verifying scaffold split isolation...
+Cross-split similarity: 100%|██████████| 200/200 [00:00<00:00, 3773.20it/s]
+
+Test→Train max Tanimoto similarity:
+  mean=0.276  median=0.264  max=0.704
+  Molecules with similarity > 0.85: 0 / 200
+✓ Scaffold split looks clean — no test molecule closely resembles any training molecule
+
+[RESULT] Max cross-split Tanimoto = 0.704  (target: < 0.85)
+
+⚠ 'orig_index' not found — reconstructing from index (may be unsafe if df_valid was reset earlier)
+[SAVED] dataset_metadata.parquet  (789,255 rows, 78.1 MB)
+Building chunk index map...
+Reading chunk sizes: 100%|██████████| 245/245 [00:00<00:00, 526.88it/s]
+[SAVED] dataset_metadata_with_chunks.parquet  (78.9 MB)
+
+Final split counts:
+split
+train    710329
+test      39464
+val       39462
+
+Building vocab: 100%|██████████| 710329/710329 [00:05<00:00, 119589.43it/s]
+Vocabulary size: 111 tokens
+Special tokens:  ['[PAD]', '[BOS]', '[EOS]', '[UNK]']
+Sample SELFIES tokens: ['[#Branch1]', '[#Branch2]', '[#C-1]', '[#C]', '[#N+1]', '[#N]', '[-/Ring1]', '[-/Ring2]', '[-\\Ring1]', '[/Br]', '[/C@@H1]', '[/C@@]', '[/C@H1]', '[/C@]', '[/C]', '[/Cl]', '[/F]', '[/I]', '[/N+1]', '[/NH1]']
+[SAVED] selfies_vocab.json
+
+[RESULT] SELFIES vocab size = 111 (set decoder embed dim to this)
+
+============================================================
+PHASE A AUDIT COMPLETE — NUMBERS TO CARRY INTO PHASE B
+============================================================
+Total clean molecules:      789,255
+Train / Val / Test:         710,329 / 39,462 / 39,464
+SELFIES round-trip rate:    100.000%
+SELFIES vocab size:         111
+Max decoder seq length:     82  (p99 SELFIES tokens + 20)
+Mean pairwise Tanimoto:     0.116
+Max cross-split Tanimoto:   0.704  (target < 0.85)
+Rare FG groups:             ['nitro', 'phosphate', 'boronic_acid', 'lactone', 'anhydride']
+IR spectrum length:         1800 points
+NMR spectrum length:        10000 points
+IR patches (20-pt patch):   90 patches → IR encoder input seq len = 90
+============================================================
+Output files in:  D:\deep learning project\audit_outputs
